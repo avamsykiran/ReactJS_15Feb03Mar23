@@ -1,4 +1,4 @@
-Angular  Pre-Required Skills
+ReactJS  Pre-Required Skills
 ------------------------------------------------
     1. HTML 5               
         Typography

@@ -29,9 +29,9 @@ class NumberSeries {
     }
 }
 
-let p1 =(new NumberSeries(10,20)).generateSeries();
-let p2=(new NumberSeries(110,120)).generateSeries();
-let p3=(new NumberSeries(210,120)).generateSeries();
+let p1 = (new NumberSeries(10,20)).generateSeries();
+let p2 = (new NumberSeries(110,120)).generateSeries();
+let p3 = (new NumberSeries(210,120)).generateSeries();
 
 p1.then(
     msg => console.log(msg),

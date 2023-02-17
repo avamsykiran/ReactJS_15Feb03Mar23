@@ -20,7 +20,7 @@ console.log(emp2.ta())
 //classes
 
 class Emp{
-    
+        
     constructor(id,name,sal){
         this.id=id;
         this.name=name;

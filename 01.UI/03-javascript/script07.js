@@ -1,4 +1,4 @@
-//call backs: a function passed to another function as a param.
+//call backs: a function passed as a param to another function.
 
 const welcome = () => "Hai! You are welcome!";
 
