@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from 'react';
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
-function App() {
-  return (
-    <h3>My First ReactJS SPA.</h3>
-  );
-}
+const App = () => (
+  <Fragment>
+    <Header appTitle="react spa 001" tagLine="..my first attempt to learn react.." />
+    <Footer />
+  </Fragment>
+);
 
 export default App;

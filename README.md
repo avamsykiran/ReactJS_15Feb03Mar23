@@ -101,4 +101,62 @@ React JS
 
         <Header />
 
+    JSX - JavaScript eXtended.
+
+        it is combination script of html and javascript to generate
+        html dom dynamically.
+
+        let unm = "Vamsy Kiran";
+        let emp = {empId:1,name:"Suseela",basic:45000};
+
+        let para1 = <p> Welcoem {unm} </p>;
+        let para2 = (
+            <p>
+                Employee {emp.empId} is called {emp.name} and is drawing
+                rupees {emp.basic} as basic pay monthly. As per HR policies
+                he will receive a hra of rupees {emp.basic*0.12} per month.
+            </p>
+        );
+
+        let friends = ["Vamsy","Kiran","Vasu","Vinay"];
+
+        let myFriendsList = friends.length===0 ? <p>No Friends </p> : (
+            <ol>
+                {
+                    friends.map( f => <li> {f} </li> )
+                }
+            </ol>
+        );
+
+        JSX Rules
+            
+            1. JSX is case sensitive.
+            2. all html elements and attributes must follow camel case.
+
+                <h1></h1>   is valid
+                <H3></H3>   is invalid
+                <h3 text-align="center"> blah blah </h3>    is invalid
+                <h3 textAlign="center"> blah blah </h3>    is valid
+            
+            3. Attribute 'class' is in-valid, instead we have to use 'className'.
+            4. All react components must follow initial capitals.
+
+                <navbar></navbar>       invalid
+                <NavBar></NavBar>       valid
+
+            5. no variable or function can hold ore return more than one
+                top level element.
+
+                    let x = <h1>Details</h1><p>Vamsy</p>                invalid
+                    let x = <div> <h1>Details</h1><p>Vamsy</p> </div>   valid
+    
+    React 'props'
+
+        props stands for properties.
+
+        props is a parameter to components through which 
+        a parent component can pass data to a child component.
+        props collect the attributes on a component and will
+        be sued inside the components.
         
+            
