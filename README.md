@@ -159,4 +159,62 @@ React JS
         props collect the attributes on a component and will
         be sued inside the components.
         
-            
+
+    Bootstrap Integration
+
+        is a styling library.
+
+        npm i bootstrap --save
+
+        node_modules
+            |-bootstrap
+                |-dist
+                    |-css
+                        |-bootstrap.min.css     //import this into index.js
+                    |-js
+                        |-bootstrap.min.js
+                        |-bootstrap.bundle.js   //import this also into index.js
+
+    Class Component
+
+        is a javascript class inhereting from Component of React.
+
+        React.Component offers
+                1. state        is an immutable property to hold all data.
+                                the state property is monitored for changes
+                                and if any changes are made to state it triggers
+                                'render()' method.
+
+                2. render()     has to return the DOM of this component.
+
+                3. setState({}) used to update 'state'.
+
+                4. also offers component life cycle methods.
+
+        class Dashboard extends Component {
+            constructor(props){
+                super(props);
+                this.state = {
+                    userName:'Vamsy Kiran',
+                    pendingTasks:5,
+                    assignedTasks:20
+                };
+            }
+
+            render(){
+
+                let {userName,pendingTasks,assignedTasks} = this.state;
+                let completedTasks = assignedTasks - pendingTasks ;
+
+                return (
+                    <section>
+                        <span>{userName}</span>
+                        <span>{pendingTasks} / {assignedTasks} </span>
+                        <span>{completedTasks} / {assignedTasks} </span>
+                    </section>
+                );
+            }
+        }
+
+        <Dashboard />
+
