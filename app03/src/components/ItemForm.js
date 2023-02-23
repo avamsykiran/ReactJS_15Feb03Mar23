@@ -3,18 +3,20 @@ import { Component } from "react";
 class ItemForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { id: 0, name: '', qty: 0, unit: '' };
+        this.state = this.props.item ? {...this.props.item} : { id: 0, name: '', qty: 0, unit: '' };
     }
 
     saveBtnClick = event => {
         let item = {...this.state};
         //all validation logic
         this.props.save(item);
-        this.setState({ id: 0, name: '', qty: 0, unit: '' });
+        if(!item.editable) { 
+            this.setState({ id: 0, name: '', qty: 0, unit: '' });
+        }
     }
 
     render() {
-        let { id, name, qty, unit } = this.state;
+        let { id, name, qty, unit,editable } = this.state;
         return (
             <tr>
                 <td>
@@ -36,7 +38,12 @@ class ItemForm extends Component {
                 <td>
                     <button type="button" 
                         onClick={this.saveBtnClick}
-                        className="btn btn-sm btn-primary me-1">ADD</button>
+                        className="btn btn-sm btn-primary me-1">{editable?"SAVE":"ADD"}</button>
+                    {editable && (
+                        <button type="button"
+                            onClick={e => this.props.cancelEditable(id) }
+                            className="btn btn-sm btn-danger me-1">CANCEL</button>
+                    )}
                 </td>
             </tr>
         );

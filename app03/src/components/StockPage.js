@@ -19,9 +19,27 @@ class StockPage extends Component {
         };
     }
 
-    add = item => this.setState({stock: [...this.state.stock,item] });
+    add = item => this.setState({ stock: [...this.state.stock, item] });
 
     remove = id => this.setState({ stock: this.state.stock.filter(item => item.id != id) });
+
+    update = modifiedItem => this.setState({
+        stock: this.state.stock.map(
+            item => item.id != modifiedItem.id ? item : { ...modifiedItem, editable: undefined }
+        )
+    });
+
+    markEditable = id => this.setState({
+        stock: this.state.stock.map(
+            item => item.id != id ? item : { ...item, editable: true }
+        )
+    });
+
+    cancelEditable = id => this.setState({
+        stock: this.state.stock.map(
+            item => item.id != id ? item : { ...item, editable: undefined }
+        )
+    });
 
     render() {
         let { stock } = this.state;
@@ -43,7 +61,17 @@ class StockPage extends Component {
                     <tbody>
                         <ItemForm save={this.add} />
                         {stock && stock.length > 0 && stock.map(item => (
-                            <ItemDetails key={item.id} item={item} remove={this.remove} />
+                            item.editable ?
+                                <ItemForm key={item.id}
+                                    item={item} 
+                                    save={this.update} 
+                                    cancelEditable={this.cancelEditable}
+                                /> :
+                                <ItemDetails key={item.id}
+                                    item={item}
+                                    remove={this.remove}
+                                    markEditable={this.markEditable}
+                                />
                         ))}
                         {(!stock || stock.length == 0) && (
                             <tr>
