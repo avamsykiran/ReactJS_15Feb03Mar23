@@ -218,3 +218,93 @@ React JS
 
         <Dashboard />
 
+    Working with React JS Forms
+
+        Controlled Form Component 
+
+            Each input element is bound to a state-property using 'value' attribute
+            of the input element and the changes are tracked using
+            onChange event of input element and the changing value is
+            received through the setState method.
+
+            this follows the single source of truth principal.
+
+        UnControlled Form Component
+
+            the input elements are not linked with any state or other variable of the component.
+
+            Each input element can be accessed via 'refs' (references)
+
+                <input type="text" value="0"  ref={tb1} />
+
+            When ever we need to collect the data we will collect the data using
+            the refs injector of the component.
+
+                let x = this.refs.tb1.value;
+
+            The form has its own source of data which is in no way being tracked
+            by the component.
+
+            'refs' are costly and are anti to single source of truth principal, and hence
+            this pattern is never recommended.
+
+
+    React class Component Life Cycle Methods
+
+        constructor()
+            |-> render()
+                    |-> componentDidMount()
+
+                            /**************************************************/
+                                a action on liffe cycle happens
+                                until setState is called.
+                                setState may be called in any event or 
+                                in the componentDidMount itself.
+                            /**************************************************/
+
+                        each time when setState is called ...
+                            |-> render()
+                                |-> componentDidUpdate()
+
+                        at the time of unloading a component
+                            componentWillUnmount()
+
+                        at the time of detecitng any error or issue in the component..
+                            componentDidCatch()
+
+    React Hooks
+
+        a react hook is a function that allows a functional component to
+        access the reactJS features.
+
+        1. hooks are to be called only in functional components.
+        2. hooks are called in the top-level code section of the functional component
+
+        useState            params:     initial value
+                            returns:    an array of getter,setter
+
+                            let [count,setCount] = useState(0);
+
+        useEffect           params:     aCallBack,an array of dependencies
+
+                            useEffect(() => {},[])
+
+                                    the array of dependencies is empty thus,
+                                    the call back is invoekd only once after the first rendering.
+
+                                    equivalend to componentDidMount()
+
+                            useEffect(() => {})
+
+                                    the array of dependencies is not defined, thus
+                                    the call back is invoekd after each time the render() is invoekd.
+
+                                    equivalent to componentDidUpdate()
+
+                            useEffect(() => {},[var1,var2])
+
+                                    the array fo dependencies is having two dependencies var1 and var2.
+                                    each time the render() is invoked, if var1 or var2 have been modified
+                                    then the call back is executed.
+
+                                    equivalent to componentDidUpdate() with conditions.
