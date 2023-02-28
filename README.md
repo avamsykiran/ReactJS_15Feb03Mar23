@@ -308,3 +308,8 @@ React JS
                                     then the call back is executed.
 
                                     equivalent to componentDidUpdate() with conditions.
+
+    State Management Using REDUX
+    ----------------------------------------------------------------------------------------
+
+        
