@@ -1,0 +1,16 @@
+{
+  "stock": [
+    {
+      "id": 1,
+      "name": "Rice",
+      "qty": 25,
+      "unit": "25 Kg Bag"
+    },
+    {
+      "id": 2,
+      "name": "Wheat",
+      "qty": 500,
+      "unit": "10 kg bag"
+    }
+  ]
+}
