@@ -454,8 +454,9 @@ redux-thunk
             |                                          |               |
             |                |←-- dispatch(actionObj)-←|               |
             |←-----reducer ←-|               dispatch(actionFunction)-←|
-                             |                              | via redux-thunk
-                             |                              |
+                             |                             |
+                             |                             | via redux-thunk
+                             |                             |
                              |                             |---------------------------------|
                              |←-- dispatch(waitActionObj)-←|  1. inform the comp to wait     |
                              |                             |  2. raise a axios req           |
