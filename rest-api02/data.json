@@ -37,6 +37,13 @@
       "unit": "25 Kg Bag",
       "outletId": 2,
       "id": 3
+    },
+    {
+      "id": 4,
+      "name": "Sugar",
+      "qty": 500,
+      "unit": "250 g packet",
+      "outletId": "3"
     }
   ]
 }
