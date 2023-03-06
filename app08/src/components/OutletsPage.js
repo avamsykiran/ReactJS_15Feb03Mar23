@@ -40,10 +40,10 @@ const OutletsPage = () => {
                             <td>{outlet.city}</td>
                             <td>
                                 <Link className='btn btn-sm btn-primary me-1' to={"/stock/" + outlet.id}> VIEW STOCK</Link>
-                                <button type="button"
+                                <Link to={"/edit/" + outlet.id}
                                     className="btn btn-sm btn-secondary me-1">
                                     EDIT
-                                </button>
+                                </Link>
                                 <button type="button"
                                     className="btn btn-sm btn-danger me-1">
                                     DELETE

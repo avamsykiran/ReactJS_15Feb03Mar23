@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-import { createErrorAction, createWaitAction, createRefreshOutletsAction } from './outletActions';
+import { createErrorAction, createWaitAction, createRefreshOutletsAction, createLoadOutletByIdAction } from './outletActions';
 
 const apiUrl = "http://localhost:7777/outlets";
 
@@ -9,6 +9,13 @@ export const createLoadOutletsActionThunk = () => dispatch => {
     dispatch(createWaitAction("Please wait while refreshing data..."));
     axios.get(apiUrl)
         .then(resp => dispatch(createRefreshOutletsAction(resp.data)))
+        .catch(err => { console.log(err); dispatch(createErrorAction("Failed to load data,Please retry later!")); })
+};
+
+export const createLoadOutletByIdActionThunk = id => dispatch => {
+    dispatch(createWaitAction("Please wait while loading data..."));
+    axios.get(apiUrl + "/"+id)
+        .then(resp => dispatch(createLoadOutletByIdAction(resp.data)))
         .catch(err => { console.log(err); dispatch(createErrorAction("Failed to load data,Please retry later!")); })
 };
 
