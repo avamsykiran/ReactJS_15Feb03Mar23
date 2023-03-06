@@ -3,17 +3,19 @@ import { Link } from 'react-router-dom';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createLoadOutletsActionThunk } from '../state/outletActionThunks';
+import { createLoadOutletsActionThunk, createDeleteItemActionThunk } from '../state/outletActionThunks';
 
 const OutletsPage = () => {
 
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
 
-    useEffect(() => dispath(createLoadOutletsActionThunk()), []);
+    useEffect(() => dispatch(createLoadOutletsActionThunk()), []);
 
     let outlets = useSelector(globalState => globalState.shop.outlets);
     let info = useSelector(globalState => globalState.shop.waitMsg);
     let err = useSelector(globalState => globalState.shop.errMsg);
+
+    const remove = id => dispatch(createDeleteItemActionThunk(id));
 
     return (
         <section className='container-fluid p-4'>
@@ -40,14 +42,13 @@ const OutletsPage = () => {
                             <td>{outlet.city}</td>
                             <td>
                                 <Link className='btn btn-sm btn-primary me-1' to={"/stock/" + outlet.id}> VIEW STOCK</Link>
-                                <Link to={"/edit/" + outlet.id}
-                                    className="btn btn-sm btn-secondary me-1">
-                                    EDIT
-                                </Link>
+                                <Link className="btn btn-sm btn-secondary me-1" to={"/edit/" + outlet.id}> EDIT </Link>
                                 <button type="button"
+                                    onClick={e => remove(outlet.id)}
                                     className="btn btn-sm btn-danger me-1">
                                     DELETE
-                                </button>                            </td>
+                                </button>                            
+                            </td>
                         </tr>
                     ))}
                     {(!outlets || outlets.length == 0) && (
